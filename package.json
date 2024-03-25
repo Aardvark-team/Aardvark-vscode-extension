@@ -6,6 +6,7 @@
   "engines": {
     "vscode": "^1.87.0"
   },
+  "main": "extension.js",
   "categories": [
     "Programming Languages"
   ],
@@ -33,9 +34,23 @@
         "scopeName": "source.adk",
         "path": "./syntaxes/aardvark.tmLanguage.json"
       }
-    ]
+    ],
+    "commands": [
+      {
+        "command": "aardvark.runAardvarkProgram",
+        "title": "Run Aardvark Program"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "aardvark.runAardvarkProgram"
+        }
+      ]
+    }
   },
   "repository": {
     "type": "git",
+    "url": "https://github.com/Aardvark-team/Aardvark-vscode-extension.git"
   }
 }
