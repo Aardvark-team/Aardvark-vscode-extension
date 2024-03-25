@@ -1,0 +1,310 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Aardvark",
+	"patterns": [
+		{
+			"include": "#base_patterns"
+		}
+	],
+	"repository": {
+		"base_patterns": {
+			"patterns": [
+				{
+					"include": "#booleans"
+				},
+				{
+					"include": "#numbers"
+				},
+				{
+					"include": "#comments"
+				},
+				{
+					"include": "#keywords"
+				},
+				{
+					"include": "#operators"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#template-strings"
+				},
+				{
+					"include": "#groups"
+				},
+				{
+					"include": "#delimiters"
+				},
+				{
+					"include": "#function_calls"
+				},
+				{
+					"include": "#function_definitions"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.number-sign.adk",
+					"match": "#(?!\\*).*$"
+				},
+				{
+					"name": "comment.block.adk",
+					"begin": "#\\*",
+					"end": "\\*#",
+					"captures": {
+						"0": {
+							"name": "punctuation.definition.comment.begin.adk"
+						},
+						"1": {
+							"name": "punctuation.definition.comment.end.adk"
+						}
+					}
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.adk",
+					"match": "\\b(delete|catch|continue|extending|class|if|include|break|as|async|function|throw|defer|while|from|return|case|for|switch|else|try|yield|extends|pause-until|static|construct|embed)\\b"
+				},
+				{
+					"name": "constant.language.null.adk",
+					"match": "\\bnull\\b"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.arithmetic.adk",
+					"match": "%|\\*|/|-|\\+|\\^"
+				},
+				{
+					"name": "keyword.operator.assignment.adk",
+					"match": "=|\\+=|\\-=|\\*=|\\%=|\\^=|\\|=|/=|\\~="
+				},
+				{
+					"name": "keyword.operator.adk",
+					"match": "\\b(xor|in|<=|@|\\?|\\.\\.\\.|%=|--|\\||<|not|x\\||>=|!=|and|~|>|==|&|\\+\\+|->|or|!|as)\\b"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.single.adk",
+					"begin": "(?!\\$)'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "constant.character.escape.adk",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.double.adk",
+					"begin": "(?!\\$)\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.adk",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.other.adk",
+					"begin": "(?!\\$)`",
+					"end": "`",
+					"patterns": [
+						{
+							"name": "constant.character.escape.adk",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		},
+		"template-strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.template.adk",
+					"begin": "\\$\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "meta.template.expression.adk",
+							"begin": "\\{",
+							"end": "\\}",
+							"patterns": [
+								{
+									"include": "#base_patterns"
+								}
+							]
+						},
+						{
+							"name": "constant.character.escape.adk",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.template.adk",
+					"begin": "\\$'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "meta.template.expression.adk",
+							"begin": "\\{",
+							"end": "\\}",
+							"patterns": [
+								{
+									"include": "#base_patterns"
+								}
+							]
+						},
+						{
+							"name": "constant.character.escape.adk",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.template.adk",
+					"begin": "\\$`",
+					"end": "`",
+					"patterns": [
+						{
+							"name": "meta.template.expression.adk",
+							"begin": "\\{",
+							"end": "\\}",
+							"patterns": [
+								{
+									"include": "#base_patterns"
+								}
+							]
+						},
+						{
+							"name": "constant.character.escape.adk",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		},
+		"groups": {
+			"patterns": [
+				{
+					"name": "meta.brace.square.adk",
+					"begin": "\\[",
+					"end": "\\]",
+					"patterns": [
+						{
+							"include": "#base_patterns"
+						}
+					]
+				},
+				{
+					"name": "meta.brace.curly.adk",
+					"begin": "{",
+					"end": "}",
+					"patterns": [
+						{
+							"include": "#base_patterns"
+						}
+					]
+				},
+				{
+					"name": "meta.brace.round.adk",
+					"begin": "\\(",
+					"end": "\\)",
+					"patterns": [
+						{
+							"include": "#base_patterns"
+						}
+					]
+				}
+			]
+		},
+		"delimiters": {
+			"patterns": [
+				{
+					"name": "keyword.operator.delimiter.adk",
+					"match": "[:,\\.$]"
+				}
+			]
+		},
+		"function_calls": {
+			"patterns": [
+				{
+					"name": "meta.function-call.adk",
+					"begin": "\\b(?!function|\\$)\\s*\\w+\\s*\\(",
+					"end": "\\)",
+					"captures": {
+						"0": {
+							"name": "entity.name.function.adk"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#base_patterns"
+						}
+					]
+				}
+			]
+		},
+		"function_definitions": {
+			"patterns": [
+				{
+					"name": "meta.function.definition.adk",
+					"match": "\\b((function(\\s+\\w+)?)|\\$\\w+)\\s*(\\(.*\\))?",
+					"captures": {
+						"4": {
+							"name": "entity.name.function.adk",
+							"patterns": [
+								{
+									"include": "#base_patterns"
+								}
+							]
+						}
+					},
+					"patterns": [
+						{
+							"include": "#base_patterns"
+						}
+					]
+				}
+			]
+		},
+		"booleans": {
+			"patterns": [
+				{
+					"name": "constant.language.boolean.adk",
+					"match": "\\b(?:true|false)\\b"
+				}
+			]
+		},
+		"null": {
+			"patterns": [
+				{
+					"name": "constant.language.null.adk",
+					"match": "\\bnull\\b"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.adk",
+					"match": "\\b[0-9]+(\\.[0-9]+)?\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.adk"
+}

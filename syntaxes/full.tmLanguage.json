@@ -1,0 +1,203 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Aardvark",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#groups"
+        },
+        {
+            "include": "#delimiters"
+        },
+        {
+            "include": "#function_calls"
+        },
+        {
+            "include": "#function_definitions"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.number-sign.adk",
+                    "match": "#(?!\\*).*$"
+                },
+                {
+                    "name": "comment.block.adk",
+                    "begin": "#\\*",
+                    "end": "\\*#",
+                    "captures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.begin.adk"
+                        },
+                        "1": {
+                            "name": "punctuation.definition.comment.end.adk"
+                        }
+                    }
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.adk",
+                    "match": "\\b(delete|catch|continue|extending|class|if|include|break|as|async|function|throw|defer|type|while|from|return|case|for|switch|else|try|yield|extends|pause-until|static)\\b"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.arithmetic.adk",
+                    "match": "%|\\*|/|-|\\+|\\^"
+                },
+                {
+                    "name": "keyword.operator.assignment.adk",
+                    "match": "=|\\+=|\\-=|\\*=|\\%=|\\^=|\\|=|/=|\\~="
+                },
+                {
+                    "name": "keyword.operator.adk",
+                    "match": "\\b(xor|in|<=|@|\\?|\\.\\.\\.|%=|--|\\||<|not|x\\||>=|!=|and|~|>|==|&|\\+\\+|->|or|!|as)\\b"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.single.adk",
+            "begin": "'",
+            "end": "'",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.adk",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "groups": {
+            "patterns": [
+                {
+                    "name": "meta.brace.square.adk",
+                    "begin": "\\[",
+                    "end": "\\]"
+                },
+                {
+                    "name": "meta.brace.curly.adk",
+                    "begin": "{",
+                    "end": "}"
+                },
+                {
+                    "name": "meta.brace.round.adk",
+                    "begin": "\\(",
+                    "end": "\\)"
+                }
+            ]
+        },
+        "delimiters": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.delimiter.adk",
+                    "match": "[:,\\.$]"
+                }
+            ]
+        },
+        "function_calls": {
+            "patterns": [
+                {
+                    "name": "meta.function-call.adk",
+                    "begin": "\\b(?!function|\\$)\\s*\\w+\\s*\\(",
+                    "end": "\\)",
+                    "captures": {
+                        "0": {
+                            "name": "entity.name.function.adk"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#comments"
+                        },
+                        {
+                            "include": "#keywords"
+                        },
+                        {
+                            "include": "#operators"
+                        },
+                        {
+                            "include": "#strings"
+                        },
+                        {
+                            "include": "#groups"
+                        },
+                        {
+                            "include": "#delimiters"
+                        }
+                    ]
+                }
+            ]
+        },
+        "function_definitions": {
+            "patterns": [
+                {
+                    "name": "meta.function.definition.adk",
+                    "match": "\\b((function(\\s+\\w+)?)|\\$\\w+)\\s*(\\(.*\\))?",
+                    "captures": {
+                        "4": {
+                            "name": "entity.name.function.adk",
+                            "patterns": [
+                                {
+                                    "include": "#comments"
+                                },
+                                {
+                                    "include": "#keywords"
+                                },
+                                {
+                                    "include": "#operators"
+                                },
+                                {
+                                    "include": "#strings"
+                                },
+                                {
+                                    "include": "#groups"
+                                },
+                                {
+                                    "include": "#delimiters"
+                                }
+                            ]
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "include": "#comments"
+                        },
+                        {
+                            "include": "#keywords"
+                        },
+                        {
+                            "include": "#operators"
+                        },
+                        {
+                            "include": "#strings"
+                        },
+                        {
+                            "include": "#groups"
+                        },
+                        {
+                            "include": "#delimiters"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "scopeName": "source.adk"
+}

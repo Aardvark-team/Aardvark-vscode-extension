@@ -1,0 +1,41 @@
+{
+  "name": "aardvark",
+  "displayName": "Aardvark",
+  "description": "Adds syntax highlighting for Aardvark.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "aardvark",
+        "aliases": [
+          "Aardvark",
+          "aardvark"
+        ],
+        "extensions": [
+          ".adk"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "resources/light/aardvark.svg",
+          "dark": "resources/dark/aardvark.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "aardvark",
+        "scopeName": "source.adk",
+        "path": "./syntaxes/aardvark.tmLanguage.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+  }
+}
