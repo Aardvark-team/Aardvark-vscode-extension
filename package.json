@@ -38,13 +38,16 @@
     "commands": [
       {
         "command": "aardvark.runAardvarkProgram",
-        "title": "Run Aardvark Program"
+        "title": "Run Aardvark Program",
+        "icon": "$(run)"
       }
     ],
     "menus": {
       "editor/title/run": [
         {
-          "command": "aardvark.runAardvarkProgram"
+          "command": "aardvark.runAardvarkProgram",
+          "group": "1_run",
+          "icon": "$(run)"
         }
       ]
     }
