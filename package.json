@@ -39,7 +39,8 @@
       {
         "command": "aardvark.runAardvarkProgram",
         "title": "Run Aardvark Program",
-        "icon": "$(run)"
+        "icon": "$(run)",
+        "when": "editorLangId == aardvark"
       }
     ],
     "menus": {
@@ -47,7 +48,8 @@
         {
           "command": "aardvark.runAardvarkProgram",
           "group": "1_run",
-          "icon": "$(run)"
+          "icon": "$(run)",
+          "when": "editorLangId == aardvark"
         }
       ]
     }
