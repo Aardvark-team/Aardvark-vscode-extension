@@ -69,7 +69,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.adk",
-					"match": "\\b(delete|catch|continue|extending|class|if|include|break|as|async|function|throw|defer|while|from|return|case|for|switch|else|try|yield|extends|pause-until|static|construct|embed)\\b"
+					"match": "\\b(delete|catch|continue|extending|class|if|include|break|as|async|function|throw|defer|while|from|return|case|for|switch|else|try|yield|extends|pause-until|static|construct|embed|private|export|let)\\b"
 				},
 				{
 					"name": "constant.language.null.adk",
