@@ -69,7 +69,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.adk",
-					"match": "\\b(delete|catch|continue|extending|class|if|include|break|as|async|function|throw|defer|while|from|return|case|for|switch|else|try|yield|extends|pause-until|static|construct|embed|private|export|let)\\b"
+					"match": "\\b(class|extends|extending|function|for|while|match|case|if|else|return|static|include|await|async|yield|let|as|from|defer|layout|break|continue|private|set|get|macro)\\b"
 				},
 				{
 					"name": "constant.language.null.adk",
@@ -89,7 +89,11 @@
 				},
 				{
 					"name": "keyword.operator.adk",
-					"match": "\\b(xor|in|<=|@|\\?|\\.\\.\\.|%=|--|\\||<|not|x\\||>=|!=|and|~|>|==|&|\\+\\+|->|or|!|as)\\b"
+					"match": "\\<=|@|\\?|\\.\\.\\.|%=|--|\\||<|x\\||>=|!=|~|>|==|&|\\+\\+|->|!"
+				},
+				{
+					"name": "keyword.operator.keyword.adk",
+					"match": "\\b(xor|in|not|and|or|as)\\b"
 				}
 			]
 		},
