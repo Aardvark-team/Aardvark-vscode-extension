@@ -1,6 +1,7 @@
 const vscode = require("vscode");
 // Import libs to run the command
 const cp = require("child_process");
+var terminal;
 
 function activate(context) {
 	// Define custom command
@@ -16,9 +17,10 @@ function activate(context) {
 
 			// Get the file path of the active document
 			const filePath = editor.document.fileName;
-
-			// Create a new terminal
-			const terminal = vscode.window.createTerminal("Aardvark Terminal");
+			if (!terminal) {
+				// Create a new terminal
+				terminal = vscode.window.createTerminal("Aardvark Terminal");
+			}
 
 			// Run the Aardvark program in the terminal
 			terminal.sendText(`adk run "${filePath}"`);
@@ -42,7 +44,9 @@ function activate(context) {
 	context.subscriptions.push(runAardvarkProgramButton);
 }
 
-function deactivate() {}
+function deactivate() {
+	serverProcess.kill();
+}
 
 module.exports = {
 	activate,
